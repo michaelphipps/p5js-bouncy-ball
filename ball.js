@@ -23,14 +23,11 @@ function Ball(){
         if (this.position.y > height- this.mass/2 ){ 
            if (this.volume >= 0.001 ){
                 this.volume *= 0.87;
-                this.volume=floor(this.volume*100)/100;
+                
+                if (this.volume > 0){
+                    bounceSound.play(0,1,this.volume); //time, rate, amp
+                } 
 
-                //bounceSound.setVolume(this.volume); 
-                bounceSound.amp(this.volume); 
-                //masterVolume(this.volume);
-                console.log(this.volume);
-
-                bounceSound.play();
             }else{
                 this.volume = 0;
             }
@@ -42,6 +39,10 @@ function Ball(){
     this.show = function (){
         noStroke();
         fill(255);
+        drawingContext.shadowOffsetX = 0;
+        drawingContext.shadowOffsetY = 0;
+        drawingContext.shadowBlur = 25;
+        drawingContext.shadowColor = "cyan";
         translate(0,0);
         ellipse(this.position.x,this.position.y,this.mass,this.mass);
     }
