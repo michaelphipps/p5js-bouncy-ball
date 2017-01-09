@@ -12,9 +12,14 @@ function Ampviz(){
     }
 
     this.show= function(){
-        fill(255,255,0);
-        strokeWeight(2);
-        stroke(255,0,0);
+        fill(255,200,0);
+        drawingContext.shadowOffsetX = 0;
+        drawingContext.shadowOffsetY = 0;
+        drawingContext.shadowBlur = 25;
+        drawingContext.shadowColor = "red";
+        smooth();
+        strokeCap(ROUND);
+        stroke(255,128,0);
         beginShape();
         for(var x = 0; x < this.time; x++){
             vertex(x,this.offset-this.graph[x]);
