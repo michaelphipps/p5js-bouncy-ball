@@ -9,6 +9,7 @@ function setup() {
 
   bounceSound.setVolume(1); 
   bounceSound.amp(1); 
+  bounceSound.playMode("restart");
   masterVolume(1);
 
   ampviz = new Ampviz();
@@ -27,10 +28,11 @@ function setup() {
 function draw() {
   background(0);
 
-  ball.update();  
   ball.edges();
-  ball.show();  
+  ball.update();  
 
   ampviz.update();
   ampviz.show();
+
+  ball.show();  
 }
